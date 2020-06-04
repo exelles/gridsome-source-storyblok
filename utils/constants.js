@@ -6,7 +6,8 @@ const SOURCE_ROOT = 'src/'
 
 const SCHEMA_NAMES = {
   TAG: 'StoryblokTag',
-  STORY: 'StoryblokEntry'
+  STORY: 'StoryblokEntry',
+  CONTENT: 'StoryblokContent'
 }
 
 const ALLOWED_ADDITIONAL_TYPES = ['datasources', 'datasource_entries', 'links']

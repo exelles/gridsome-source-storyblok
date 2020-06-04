@@ -8,6 +8,7 @@ const { SCHEMA_NAMES } = require('./constants')
 const createSchema = (store, config = {}) => {
   const typeName = config.typeName || SCHEMA_NAMES.STORY
   const tagTypeName = config.tagTypeName || SCHEMA_NAMES.TAG
+  const contentTypeName = config.contentTypeName || SCHEMA_NAMES.CONTENT
 
   store.addSchemaTypes(`
     type AlternateStory {
@@ -30,8 +31,21 @@ const createSchema = (store, config = {}) => {
   `)
 
   store.addSchemaTypes(`
+    type ${contentTypeName} {
+      _uid: ID!
+      title: String!
+      excerpt: String!
+      link_source: JSON
+      image: JSON
+      content: JSON
+      component: String!
+      tag: [String]
+    }
+  `)
+
+  store.addSchemaTypes(`
     type ${typeName} implements Node {
-      content: JSONObject
+      content: ${contentTypeName}
       name: String!
       created_at: Date
       published_at: Date
